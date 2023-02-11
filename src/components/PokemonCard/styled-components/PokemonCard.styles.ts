@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Id = styled.div`
+  display: flex;
+  align-items: center;
   background-color: aquamarine;
   border-radius: 1.5rem;
   padding: 0.2rem 1.5rem;
@@ -8,6 +10,7 @@ export const Id = styled.div`
   font-size: 0.8rem;
   margin-left: auto;
   line-height: 1.5rem;
+  height: 2rem;
 `;
 
 export const Card = styled.div`
@@ -28,4 +31,13 @@ export const Card = styled.div`
   div {
     line-height: 1.5rem;
   }
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const FavoriteToggle = styled.img`
+  max-width: 30px;
 `;

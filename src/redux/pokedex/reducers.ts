@@ -1,3 +1,5 @@
+import { IElementWithId } from '@/models';
+import { deletePokemonFromCollection } from '@/utils';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { PokedexState } from './initialState';
 
@@ -31,6 +33,22 @@ const reducers = {
     action: PayloadAction<PokedexState['habitatPokemons']>
   ) => {
     state.habitatPokemons = { ...state.habitatPokemons, ...action.payload };
+  },
+  setFavoritePokemon: (
+    state: PokedexState,
+    action: PayloadAction<IElementWithId>
+  ) => {
+    const updateFavoritePokemons = [...state.favoritePokemons];
+    updateFavoritePokemons.push(action.payload);
+    state.favoritePokemons = updateFavoritePokemons;
+  },
+  removeFavoritePokemon: (
+    state: PokedexState,
+    action: PayloadAction<number>
+  ) => {
+    const updateFavoritePokemons = [...state.favoritePokemons];
+    deletePokemonFromCollection(updateFavoritePokemons, action.payload);
+    state.favoritePokemons = updateFavoritePokemons;
   },
 };
 
