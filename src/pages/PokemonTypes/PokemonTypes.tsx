@@ -2,6 +2,7 @@ import {
   ErrorMessage,
   InputSearch,
   LinkContainer,
+  LoadingScreen,
   Navbar,
   Pagination,
 } from '@/components';
@@ -19,31 +20,34 @@ const PokemonTypes: React.FC = () => {
   );
 
   return (
-    <GeneralContainer>
-      <Navbar name="Pokemon Types" to="/" />
-      <InputSearch />
-      {!loading && (
-        <ListContainer>
-          {pokemonTypes.list?.map((type: IElementWithId) => (
-            <LinkContainer
-              key={type.id}
-              name={wordsToUppercase(type.name)}
-              to={`/types/${type.name}`}
-              bgColor={type.name}
-            />
-          ))}
-        </ListContainer>
-      )}
-      <Pagination
-        loading={loading}
-        totalPages={pokemonTypes.pages || 0}
-        currentPage={pokemonTypes.currentPage || 1}
-        totalButtons={5}
-        fetchList={fetchList}
-        show={!!(pokemonTypes.pages - 1)}
-      />
-      {error && <ErrorMessage />}
-    </GeneralContainer>
+    <>
+      {loading && <LoadingScreen />}
+      <GeneralContainer>
+        <Navbar name="Pokemon Types" to="/" />
+        <InputSearch />
+        {!loading && (
+          <ListContainer>
+            {pokemonTypes.list?.map((type: IElementWithId) => (
+              <LinkContainer
+                key={type.id}
+                name={wordsToUppercase(type.name)}
+                to={`/types/${type.name}`}
+                bgColor={type.name}
+              />
+            ))}
+          </ListContainer>
+        )}
+        <Pagination
+          loading={loading}
+          totalPages={pokemonTypes.pages || 0}
+          currentPage={pokemonTypes.currentPage || 1}
+          totalButtons={5}
+          fetchList={fetchList}
+          show={!!(pokemonTypes.pages - 1)}
+        />
+        {error && <ErrorMessage />}
+      </GeneralContainer>
+    </>
   );
 };
 export default PokemonTypes;

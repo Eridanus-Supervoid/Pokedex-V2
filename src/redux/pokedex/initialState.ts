@@ -21,7 +21,7 @@ const initialState: InitialStatePokedex = {
   pokemonHabitats: EmptyListAndPagination,
   typePokemons: EmptyCompleteListAndPagination,
   habitatPokemons: EmptyCompleteListAndPagination,
-  favoritePokemons: [{ id: '1', name: 'bulbasaur' }],
+  favoritePokemons: [],
 };
 
 export type PokedexState = typeof initialState;

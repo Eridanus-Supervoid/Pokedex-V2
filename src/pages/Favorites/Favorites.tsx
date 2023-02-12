@@ -7,17 +7,25 @@ import { wordsToUppercase } from '@/utils';
 
 const Favorites: React.FC = () => {
   const { favoritePokemons } = useAppSelector((state) => state.pokedex);
+  // const { loadingImages, imageLoaded } = useImageLoader(favoritePokemons);
 
   return (
-    <GeneralContainer>
-      <Navbar name={wordsToUppercase(`Catch Pokemons`)} to="/" />
-      <InputSearch />
-      <ListContainer>
-        {favoritePokemons.map((pokemon: IElementWithId) => (
-          <PokemonCard pokemon={pokemon} key={pokemon.id} />
-        ))}
-      </ListContainer>
-    </GeneralContainer>
+    <>
+      {/* {loadingImages && <LoadingScreen />} */}
+      <GeneralContainer>
+        <Navbar name={wordsToUppercase(`Catch Pokemons`)} to="/" />
+        <InputSearch />
+        <ListContainer>
+          {favoritePokemons.map((pokemon: IElementWithId) => (
+            <PokemonCard
+              pokemon={pokemon}
+              key={pokemon.id}
+              imageLoaded={() => {}}
+            />
+          ))}
+        </ListContainer>
+      </GeneralContainer>
+    </>
   );
 };
 export default Favorites;

@@ -2,6 +2,7 @@ import {
   ErrorMessage,
   InputSearch,
   LinkContainer,
+  LoadingScreen,
   Navbar,
   Pagination,
 } from '@/components';
@@ -20,31 +21,34 @@ const PokemonHabitats: React.FC = () => {
   );
 
   return (
-    <GeneralContainer>
-      <Navbar name="Pokemon Habitats" to="/" />
-      <InputSearch />
-      {!loading && (
-        <ListContainer long>
-          {pokemonHabitats.list?.map((habitat: IElementWithId) => (
-            <LinkContainer
-              key={habitat.id}
-              name={wordsToUppercase(habitat.name)}
-              to={`/habitats/${habitat.name}`}
-              bgColor={habitatToColor(habitat.name)}
-            />
-          ))}
-        </ListContainer>
-      )}
-      <Pagination
-        loading={loading}
-        totalPages={pokemonHabitats.pages || 0}
-        currentPage={pokemonHabitats.currentPage || 1}
-        totalButtons={5}
-        fetchList={fetchList}
-        show={!!(pokemonHabitats.pages - 1)}
-      />
-      {error && <ErrorMessage />}
-    </GeneralContainer>
+    <>
+      {loading && <LoadingScreen />}
+      <GeneralContainer>
+        <Navbar name="Pokemon Habitats" to="/" />
+        <InputSearch />
+        {!loading && (
+          <ListContainer long>
+            {pokemonHabitats.list?.map((habitat: IElementWithId) => (
+              <LinkContainer
+                key={habitat.id}
+                name={wordsToUppercase(habitat.name)}
+                to={`/habitats/${habitat.name}`}
+                bgColor={habitatToColor(habitat.name)}
+              />
+            ))}
+          </ListContainer>
+        )}
+        <Pagination
+          loading={loading}
+          totalPages={pokemonHabitats.pages || 0}
+          currentPage={pokemonHabitats.currentPage || 1}
+          totalButtons={5}
+          fetchList={fetchList}
+          show={!!(pokemonHabitats.pages - 1)}
+        />
+        {error && <ErrorMessage />}
+      </GeneralContainer>
+    </>
   );
 };
 export default PokemonHabitats;
