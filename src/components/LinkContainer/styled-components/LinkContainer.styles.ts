@@ -15,4 +15,9 @@ export const LinkContainer = styled.div<LinkContainerProps>`
   font-weight: 600;
   border-radius: 2rem;
   color: white;
+  transition: 0.5s;
+  :hover {
+    box-shadow: 3px 3px 7px var(--list-shadow-hover);
+    transform: scale(1.03);
+  }
 `;

@@ -1,6 +1,6 @@
 import { IFetchAllCallback, ISetAllCallback } from '@/models';
 import { useAppDispatch } from '@/redux';
-import { createListTypes } from '@/utils';
+import { createAllList } from '@/utils';
 import { useState } from 'react';
 
 export const useFetchAllList = (
@@ -19,7 +19,7 @@ export const useFetchAllList = (
       dispatch(fetchCallback(group!))
         .unwrap()
         .then((listWithIds) => {
-          const list = createListTypes(listWithIds);
+          const list = createAllList(listWithIds);
           const numberOfPages = list.length;
           dispatch(
             setCallback({

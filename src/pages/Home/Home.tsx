@@ -19,7 +19,7 @@ const Home: React.FC = () => {
         <LinkContainer to="/pokemons" name="All Pokemons" bgColor="grass" />
         <LinkContainer to="/types" name="Types" bgColor="fire" />
         <LinkContainer to="/habitats" name="Habitats" bgColor="water" />
-        <LinkContainer to="/" name="Favorites" />
+        <LinkContainer to="/favorites" name="Favorites" />
       </S.Menu>
     </>
   );

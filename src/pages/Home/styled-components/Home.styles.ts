@@ -5,7 +5,7 @@ export const Header = styled.header`
   flex-direction: column;
   width: 100%;
   align-items: flex-start;
-  background-color: #f25355;
+  background-color: var(--red);
   color: white;
   padding: 1.5rem;
   clip-path: ellipse(100% 70% at 50% 30%);

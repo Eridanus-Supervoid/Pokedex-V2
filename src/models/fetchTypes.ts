@@ -32,7 +32,10 @@ export interface IAsyncThunkConfig {
 }
 
 export type IFetchCallback = AsyncThunk<
-  IResponseFetchCallback,
+  {
+    listWithIds: IElementWithId[];
+    offsetUntilGenLimit: number;
+  },
   IPaginatedRequest,
   IAsyncThunkConfig
 >;

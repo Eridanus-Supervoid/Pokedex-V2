@@ -21,7 +21,9 @@ export const GlobalStyles = createGlobalStyle`
 
     // Main Colors
     --red: #F25355;
-    --gray: #f0f0f0;
+    --card-shadow: #3b4cca;
+    --card-shadow-hover: #ff00fe;
+    --list-shadow-hover: #b6b6b6;
     // Poke Colors
     --fire: #F6AD76;
     --water: #92B8F8;

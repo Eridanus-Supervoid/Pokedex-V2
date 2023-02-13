@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { FootMenu } from './components';
 import {
+  Favorites,
   HabitatPokemons,
   Home,
   PokemonHabitats,
@@ -20,8 +22,10 @@ const App: React.FC = () => {
         <Route path="types/:type" element={<TypePokemons />} />
         <Route path="habitats" element={<PokemonHabitats />} />
         <Route path="habitats/:habitat" element={<HabitatPokemons />} />
+        <Route path="favorites" element={<Favorites />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <FootMenu />
     </>
   );
 };
