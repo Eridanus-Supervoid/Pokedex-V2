@@ -1,6 +1,7 @@
 import {
   fullListHabitatPokemonsAdapter,
   fullListTypePokemonsAdapter,
+  listAdapter,
 } from '@/adapters/fetchAdapters';
 import { IElementWithId, IPaginatedRequest } from '@/models';
 import {
@@ -17,7 +18,8 @@ export const getAllPokemons = createAsyncThunk(
   async (paginatedRequest: IPaginatedRequest, { rejectWithValue }) => {
     try {
       const { results, count } = await getAllPokemonsApi(paginatedRequest);
-      return { results, count };
+      const { listWithIds, offsetUntilGenLimit } = listAdapter(results, count);
+      return { listWithIds, offsetUntilGenLimit };
     } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
@@ -29,7 +31,8 @@ export const getAllTypes = createAsyncThunk(
   async (paginatedRequest: IPaginatedRequest, { rejectWithValue }) => {
     try {
       const { results, count } = await getAllTypesApi(paginatedRequest);
-      return { results, count };
+      const { listWithIds, offsetUntilGenLimit } = listAdapter(results, count);
+      return { listWithIds, offsetUntilGenLimit };
     } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
@@ -41,7 +44,8 @@ export const getAllHabitats = createAsyncThunk(
   async (paginatedRequest: IPaginatedRequest, { rejectWithValue }) => {
     try {
       const { results, count } = await getAllHabitatsApi(paginatedRequest);
-      return { results, count };
+      const { listWithIds, offsetUntilGenLimit } = listAdapter(results, count);
+      return { listWithIds, offsetUntilGenLimit };
     } catch (error: any) {
       return rejectWithValue(error.response.data);
     }

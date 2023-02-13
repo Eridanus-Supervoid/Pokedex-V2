@@ -43,16 +43,23 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
         />
         <S.Id>{`N°${id}`}</S.Id>
       </S.HeaderContainer>
-      {loading && <Spinner />}
-      <img
-        src={error ? noImage : `${API_IMG_URL}${id}.png`}
-        style={error ? { padding: '1rem' } : { padding: '0' }}
-        alt={`${name} image`}
-        onLoad={handleLoad}
-        onError={() => {
-          setError(true);
-        }}
-      />
+      <S.ImageContainer>
+        {loading && (
+          <S.SpinnerContainer>
+            <Spinner />
+          </S.SpinnerContainer>
+        )}
+        <S.Image
+          src={error ? noImage : `${API_IMG_URL}${id}.png`}
+          alt={`${name} image`}
+          onLoad={handleLoad}
+          onError={() => {
+            setError(true);
+          }}
+          loadingCheck={loading}
+          error={error}
+        />
+      </S.ImageContainer>
       <div>{wordsToUppercase(name)}</div>
     </S.Card>
   );

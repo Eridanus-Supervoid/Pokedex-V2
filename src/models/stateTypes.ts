@@ -21,7 +21,7 @@ export const EmptyCompleteListAndPagination: IAllListAndPagination = {
   name: '',
   pages: 1,
   currentPage: 0,
-  list: [],
+  list: [[]],
 };
 
 export const EmptyListAndPagination: IListAndPagination = {

@@ -1,6 +1,6 @@
 import { IFetchCallback, ISetCallback } from '@/models';
 import { useAppDispatch } from '@/redux';
-import { addIdsToLists, countPages, calcCurrentPage } from '@/utils';
+import { countPages, calcCurrentPage } from '@/utils';
 import { useState } from 'react';
 
 export const useFetchList = (
@@ -16,9 +16,8 @@ export const useFetchList = (
     setLoading(true);
     dispatch(fetchCallback({ offset }))
       .unwrap()
-      .then(({ results, count }) => {
-        const listWithIds = addIdsToLists(results);
-        const numberOfPages = countPages(count);
+      .then(({ listWithIds, offsetUntilGenLimit }) => {
+        const numberOfPages = countPages(offsetUntilGenLimit);
         const currentPage = calcCurrentPage(offset);
         dispatch(
           setCallback({

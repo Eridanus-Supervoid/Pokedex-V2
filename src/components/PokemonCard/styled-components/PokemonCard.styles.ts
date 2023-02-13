@@ -24,6 +24,7 @@ export const Card = styled.div`
 
 export const HeaderContainer = styled.div`
   display: flex;
+  min-height: 44px;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -40,6 +41,28 @@ export const Id = styled.div`
   margin-left: auto;
   line-height: 1.5rem;
   height: 2rem;
+`;
+
+export const ImageContainer = styled.div`
+  min-height: 110px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Image = styled.img<{ error: boolean; loadingCheck: boolean }>`
+  padding: ${({ error }) => (error ? '1rem' : '0')};
+  display: ${({ loading }) => (loading ? 'none' : 'block')};
+`;
+
+export const SpinnerContainer = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(50% - (80px / 2));
+  left: calc(50% - (80px / 2));
 `;
 
 export const FavoriteToggle = styled.img`
