@@ -1,9 +1,11 @@
 import {
   EmptyCompleteListAndPagination,
   EmptyListAndPagination,
+  EmptyPokemonDetail,
   IAllListAndPagination,
   IElementWithId,
   IListAndPagination,
+  IPokemonDetail,
 } from '@/models';
 
 interface InitialStatePokedex {
@@ -13,6 +15,7 @@ interface InitialStatePokedex {
   typePokemons: IAllListAndPagination;
   habitatPokemons: IAllListAndPagination;
   favoritePokemons: IElementWithId[];
+  pokemonDetail: IPokemonDetail;
 }
 
 const initialState: InitialStatePokedex = {
@@ -22,6 +25,7 @@ const initialState: InitialStatePokedex = {
   typePokemons: EmptyCompleteListAndPagination,
   habitatPokemons: EmptyCompleteListAndPagination,
   favoritePokemons: [],
+  pokemonDetail: EmptyPokemonDetail,
 };
 
 export type PokedexState = typeof initialState;

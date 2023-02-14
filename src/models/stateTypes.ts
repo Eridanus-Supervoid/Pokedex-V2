@@ -17,16 +17,21 @@ export interface IListAndPagination {
   list: IElementWithId[];
 }
 
-export const EmptyCompleteListAndPagination: IAllListAndPagination = {
-  name: '',
-  pages: 1,
-  currentPage: 0,
-  list: [[]],
-};
-
-export const EmptyListAndPagination: IListAndPagination = {
-  pages: 0,
-  currentOffset: 0,
-  currentPage: 0,
-  list: [],
-};
+export interface IPokemonDetail {
+  id: string;
+  name: string;
+  height: { meters: string; feetAndInches: string };
+  weight: string;
+  types: IElementWithId[];
+  abilities: IElementWithId[];
+  sprites: {
+    front_default: string;
+    back_default: string;
+  };
+  stats: { name: string; base_stat: number }[];
+  evolution: IElementWithId[];
+  description: string;
+  habitat: IElementWithId;
+  legendary: boolean;
+  mythical: boolean;
+}

@@ -43,12 +43,14 @@ export const Id = styled.div`
   height: 2rem;
 `;
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled.button`
   min-height: 110px;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+  border: 0;
+  background-color: transparent;
 `;
 
 export const Image = styled.img<{ error: boolean; loadingCheck: boolean }>`

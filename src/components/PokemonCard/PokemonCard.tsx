@@ -8,6 +8,7 @@ import * as S from './styled-components';
 import iconOpen from '@/assets/images/icon-open-pokeball.png';
 import iconClose from '@/assets/images/icon-close-pokeball.png';
 import noImage from '@/assets/images/icon-no-image.png';
+import { getPokemon, setPokemonDetail, useAppDispatch } from '@/redux';
 
 interface IPokemonCardProps {
   pokemon: IElementWithId;
@@ -24,8 +25,22 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
   const { isFavorite, addFavoritePokemon, deleteFavoritePokemon } =
     useFavoritePokemon(id!);
 
-  const handleClick = () => {
+  //BORRAR
+  const dispatch = useAppDispatch();
+
+  const handleFavoriteToggle = () => {
     isFavorite ? deleteFavoritePokemon(+id!) : addFavoritePokemon(pokemon);
+  };
+
+  const handleImageClick = () => {
+    dispatch(getPokemon(+id!))
+      .unwrap()
+      .then(({ pokemonDetails }) => {
+        dispatch(setPokemonDetail(pokemonDetails));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleLoad = () => {
@@ -39,11 +54,11 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
         <S.FavoriteToggle
           src={isFavorite ? iconClose : iconOpen}
           alt={isFavorite ? 'Close Pokeball' : 'Open Pokeball'}
-          onClick={handleClick}
+          onClick={handleFavoriteToggle}
         />
         <S.Id>{`N°${id}`}</S.Id>
       </S.HeaderContainer>
-      <S.ImageContainer>
+      <S.ImageContainer onClick={handleImageClick}>
         {loading && (
           <S.SpinnerContainer>
             <Spinner />
