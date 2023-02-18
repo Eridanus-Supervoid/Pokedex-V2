@@ -30,11 +30,11 @@ export const useFetchAllList = (
             })
           );
         })
-        .finally(() => {
-          setLoading(false);
-        })
         .catch(() => {
           setError(true);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     } else {
       dispatch(setCallback({ currentPage: page }));

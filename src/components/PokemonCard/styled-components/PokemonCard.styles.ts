@@ -51,6 +51,7 @@ export const ImageContainer = styled.button`
   justify-content: center;
   border: 0;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 export const Image = styled.img<{ error: boolean; loadingCheck: boolean }>`
@@ -69,4 +70,5 @@ export const SpinnerContainer = styled.div`
 
 export const FavoriteToggle = styled.img`
   max-width: 30px;
+  cursor: pointer;
 `;

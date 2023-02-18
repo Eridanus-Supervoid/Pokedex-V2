@@ -22,7 +22,7 @@ export const Navbar: React.FC<INavProps> = ({ name, to }) => {
         <>
           <button
             onClick={() => navigate(to!)}
-            style={{ border: 'none', marginRight: '10px' }}
+            style={{ border: 'none', marginRight: '10px', background: 'none' }}
           >
             {'<'}
           </button>

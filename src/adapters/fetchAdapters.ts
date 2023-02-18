@@ -50,21 +50,26 @@ export const pokemonDetailsAdapter = (
   const { flavor_text_entries, habitat, is_legendary, is_mythical } =
     pokemonSpecies;
 
+  const habitatID = habitat ? idExtractor(habitat.url) : '';
+  const habitatName = habitat ? habitat.name : 'Unknown';
+
   const pokemonDetails: IPokemonDetail = {
     id: id.toString(),
-    name,
+    name: name,
     height: heightTransformer(height),
     weight: weightTransformer(weight),
     types: addIdsToPokemonTypeList(types),
     abilities: addIdsToPokemonAbilityList(abilities),
     sprites: {
-      front_default: sprites.front_default!,
-      back_default: sprites.back_default!,
+      default: sprites.other?.['official-artwork']?.front_default!,
     },
     stats: createStatsList(stats),
     evolution: createEvolutionList(chain),
     description: flavor_text_entries[0].flavor_text,
-    habitat: { name: habitat.name, id: idExtractor(habitat.url) },
+    habitat: {
+      name: habitatName,
+      id: habitatID,
+    },
     legendary: is_legendary,
     mythical: is_mythical,
   };

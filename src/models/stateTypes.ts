@@ -25,8 +25,7 @@ export interface IPokemonDetail {
   types: IElementWithId[];
   abilities: IElementWithId[];
   sprites: {
-    front_default: string;
-    back_default: string;
+    default: string;
   };
   stats: { name: string; base_stat: number }[];
   evolution: IElementWithId[];

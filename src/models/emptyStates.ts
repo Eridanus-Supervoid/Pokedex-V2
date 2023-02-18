@@ -26,8 +26,7 @@ export const EmptyPokemonDetail: IPokemonDetail = {
   types: [],
   abilities: [],
   sprites: {
-    front_default: '',
-    back_default: '',
+    default: '',
   },
   stats: [],
   evolution: [],
