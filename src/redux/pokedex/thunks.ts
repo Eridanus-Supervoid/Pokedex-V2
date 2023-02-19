@@ -102,7 +102,6 @@ export const getPokemon = createAsyncThunk(
       );
       return { pokemonDetails };
     } catch (error: any) {
-      console.log('errorAqui', error);
       return rejectWithValue(error.response.data);
     }
   }

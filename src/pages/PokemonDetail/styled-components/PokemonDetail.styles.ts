@@ -8,25 +8,32 @@ export const Container = styled.div<IContainerProps>`
   display: flex;
   flex-direction: column;
   height: 1100px;
-  border: solid 1px black;
-  /* filter: drop-shadow(
-    0px -100px 500px var(--${({ pokemonType }) => pokemonType})
-  ); */
-`;
-
-export const Carousel = styled.div`
-  display: flex;
-  padding: 2rem 0 0;
-  width: 100%;
-  img {
-    width: 100%;
-  }
 `;
 
 export const DetailsContainer = styled.section<IContainerProps>`
   display: flex;
+  padding: 4rem 2rem;
+  align-items: center;
   flex-direction: column;
   height: 700px;
   background-color: var(--${({ pokemonType }) => pokemonType});
-  clip-path: ellipse(100% 100% at 50% 100%);
+  clip-path: ellipse(150% 100% at 50% 100%);
+`;
+
+export const MenuContainer = styled.div`
+  display: flex;
+  border-radius: 4rem;
+  overflow: hidden;
+  gap: 1px;
+`;
+
+export const MenuItem = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
 `;

@@ -59,15 +59,6 @@ export const Image = styled.img<{ error: boolean; loadingCheck: boolean }>`
   display: ${({ loading }) => (loading ? 'none' : 'block')};
 `;
 
-export const SpinnerContainer = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: calc(50% - (80px / 2));
-  left: calc(50% - (80px / 2));
-`;
-
 export const FavoriteToggle = styled.img`
   max-width: 30px;
   cursor: pointer;

@@ -3,7 +3,7 @@ import { wordsToUppercase } from '@/utils';
 import { useFavoritePokemon } from '@/hooks';
 import { useState } from 'react';
 import { API_IMG_URL } from '@/services';
-import { Spinner } from '@/styled-components';
+import { Spinner, SpinnerContainer } from '@/styled-components';
 import * as S from './styled-components';
 import iconOpen from '@/assets/images/icon-open-pokeball.png';
 import iconClose from '@/assets/images/icon-close-pokeball.png';
@@ -50,11 +50,11 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
         />
         <S.Id>{`N°${id}`}</S.Id>
       </S.HeaderContainer>
-      <S.ImageContainer onClick={handleImageClick}>
+      <S.ImageContainer onClick={handleImageClick} type="button">
         {loading && (
-          <S.SpinnerContainer>
+          <SpinnerContainer>
             <Spinner />
-          </S.SpinnerContainer>
+          </SpinnerContainer>
         )}
         <S.Image
           src={error ? noImage : `${API_IMG_URL}${id}.png`}

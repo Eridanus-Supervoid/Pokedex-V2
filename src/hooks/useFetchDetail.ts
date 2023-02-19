@@ -12,11 +12,9 @@ export const useFetchDetail = (id: string) => {
     dispatch(getPokemon(+id!))
       .unwrap()
       .then(({ pokemonDetails }) => {
-        console.log('first');
         dispatch(setPokemonDetail(pokemonDetails));
       })
       .catch((error) => {
-        console.log('error', error);
         setError(error);
       })
       .finally(() => {

@@ -25,3 +25,12 @@ export const Spinner = styled.div`
     }
   }
 `;
+
+export const SpinnerContainer = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(50% - (80px / 2));
+  left: calc(50% - (80px / 2));
+`;
