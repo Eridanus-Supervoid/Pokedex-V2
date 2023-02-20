@@ -5,20 +5,20 @@ import { ImageContainer, Type, TypesContainer } from './styled-components';
 
 export interface IDetailsHeaderProps {
   loadingImage: boolean;
-  setLoadingImage: React.Dispatch<React.SetStateAction<boolean>>;
+  onLoadImage?: () => void;
 }
 
 export const Header: React.FC<IDetailsHeaderProps> = ({
   loadingImage,
-  setLoadingImage,
+  onLoadImage,
 }) => {
   const { sprites, types } = useAppSelector(
     (state) => state.pokedex.pokemonDetail
   );
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate(`/types/${types[0].name}`);
+  const handleClick = (idx: number) => {
+    navigate(`/types/${types[idx].name}`);
   };
 
   return (
@@ -29,19 +29,15 @@ export const Header: React.FC<IDetailsHeaderProps> = ({
             <Spinner />
           </SpinnerContainer>
         )}
-        <img
-          src={sprites.default}
-          onLoad={() => setLoadingImage(false)}
-          alt="front"
-        />
+        <img src={sprites.default} onLoad={onLoadImage} alt="front" />
       </ImageContainer>
       <TypesContainer>
-        {types.map((types) => (
+        {types.map((types, idx) => (
           <Type
             pokemonType={types.name}
             key={types.name}
             type="button"
-            onClick={handleClick}
+            onClick={() => handleClick(idx)}
           >
             {types.name}
           </Type>

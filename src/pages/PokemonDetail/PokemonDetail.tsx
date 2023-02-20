@@ -16,6 +16,7 @@ const PokemonDetail: React.FC = () => {
   const { id, name } = useParams();
   const { loading, error } = useFetchDetail(id!);
   const [loadingImage, setLoadingImage] = useState(true);
+  const [section, setSection] = useState('about');
   const { types } = useAppSelector((state) => state.pokedex.pokemonDetail);
 
   return (
@@ -24,14 +25,35 @@ const PokemonDetail: React.FC = () => {
       {!loading && (
         <S.Container pokemonType={types[0]?.name}>
           <Navbar name={wordsToUppercase(name!)} to="/" />
-          <Header loadingImage={loading} setLoadingImage={setLoadingImage} />
+          <Header
+            loadingImage={loading}
+            onLoadImage={() => setLoadingImage(false)}
+          />
           <S.DetailsContainer pokemonType={types[0]?.name}>
             <S.MenuContainer>
-              <S.MenuItem type="button">About</S.MenuItem>
-              <S.MenuItem type="button">Status</S.MenuItem>
-              <S.MenuItem type="button">Others</S.MenuItem>
+              <S.MenuItem
+                type="button"
+                onClick={() => setSection('about')}
+                selected={section === 'about'}
+              >
+                About
+              </S.MenuItem>
+              <S.MenuItem
+                type="button"
+                onClick={() => setSection('status')}
+                selected={section === 'status'}
+              >
+                Status
+              </S.MenuItem>
+              <S.MenuItem
+                type="button"
+                onClick={() => setSection('others')}
+                selected={section === 'others'}
+              >
+                Others
+              </S.MenuItem>
             </S.MenuContainer>
-            <About />
+            {section === 'about' && <About />}
           </S.DetailsContainer>
         </S.Container>
       )}

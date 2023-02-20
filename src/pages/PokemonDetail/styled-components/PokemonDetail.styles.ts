@@ -27,7 +27,7 @@ export const MenuContainer = styled.div`
   gap: 1px;
 `;
 
-export const MenuItem = styled.button`
+export const MenuItem = styled.button<{ selected: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,5 +35,8 @@ export const MenuItem = styled.button`
   background-color: white;
   border: 0;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   font-weight: 600;
+  background-color: ${({ selected }) =>
+    selected ? 'rgba(255,255,255,0.7)' : 'white'};
 `;
