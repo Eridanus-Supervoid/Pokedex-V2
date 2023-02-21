@@ -22,7 +22,7 @@ export const EmptyPokemonDetail: IPokemonDetail = {
   id: '0',
   name: '',
   height: { meters: '', feetAndInches: '' },
-  weight: '',
+  weight: { kg: '', lbs: '' },
   types: [],
   abilities: [],
   sprites: {

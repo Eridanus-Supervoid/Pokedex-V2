@@ -7,7 +7,6 @@ interface IContainerProps {
 export const Container = styled.div<IContainerProps>`
   display: flex;
   flex-direction: column;
-  height: 1100px;
 `;
 
 export const DetailsContainer = styled.section<IContainerProps>`
@@ -15,7 +14,6 @@ export const DetailsContainer = styled.section<IContainerProps>`
   padding: 4rem 2rem;
   align-items: center;
   flex-direction: column;
-  height: 700px;
   background-color: var(--${({ pokemonType }) => pokemonType});
   clip-path: ellipse(150% 100% at 50% 100%);
 `;

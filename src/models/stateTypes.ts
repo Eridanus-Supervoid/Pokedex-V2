@@ -21,7 +21,7 @@ export interface IPokemonDetail {
   id: string;
   name: string;
   height: { meters: string; feetAndInches: string };
-  weight: string;
+  weight: { kg: string; lbs: string };
   types: IElementWithId[];
   abilities: IElementWithId[];
   sprites: {
