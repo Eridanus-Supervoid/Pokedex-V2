@@ -17,10 +17,14 @@ export const useNavigation = () => {
   }, [pathname]);
 
   const handleNavigate = () => {
-    if (navigate.length > 2) {
-      navigate(-1);
+    if (window.history.length > 2) {
+      if (currentSection !== '/' && pathname !== currentSection) {
+        navigate(-1);
+      } else {
+        navigate('/');
+      }
     } else {
-      navigate(currentSection);
+      navigate('/');
     }
   };
 

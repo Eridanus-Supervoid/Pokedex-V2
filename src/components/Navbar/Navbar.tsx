@@ -10,7 +10,9 @@ interface INavProps {
 
 export const Navbar: React.FC<INavProps> = ({ name, to, padding = '0px' }) => {
   const isHome = window.location.pathname === '/';
-  const { handleNavigate } = useNavigation();
+  const { currentSection, handleNavigate } = useNavigation();
+
+  console.log(currentSection);
 
   return (
     <S.Navbar padding={padding}>
