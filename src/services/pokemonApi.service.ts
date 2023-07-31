@@ -1,9 +1,11 @@
 import { IPaginatedRequest } from '@/models';
 import axios from 'axios';
 import {
+  EvolutionChain,
   NamedAPIResourceList,
   Pokemon,
   PokemonHabitat,
+  PokemonSpecies,
   Type,
 } from 'pokenode-ts';
 
@@ -50,4 +52,16 @@ export const getHabitatPokemonsApi = async (
 
 export const getPokemonApi = async (id: number): Promise<Pokemon> => {
   return axios.get(`${API_URL}pokemon/${id}`);
+};
+
+export const getPokemonSpeciesApi = async (
+  id: number
+): Promise<PokemonSpecies> => {
+  return axios.get(`${API_URL}pokemon-species/${id}`);
+};
+
+export const getEvolutionChainApi = async (
+  id: number
+): Promise<EvolutionChain> => {
+  return axios.get(`${API_URL}evolution-chain/${id}`);
 };

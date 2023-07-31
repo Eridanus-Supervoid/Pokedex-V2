@@ -9,6 +9,7 @@ import {
   PokemonTypes,
   TypePokemons,
 } from './pages';
+import PokemonDetail from './pages/PokemonDetail/PokemonDetail';
 import { GlobalStyles } from './styled-components';
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="pokemons" element={<Pokemons />} />
+        <Route path="pokemons/:name/:id" element={<PokemonDetail />} />
         <Route path="types" element={<PokemonTypes />} />
         <Route path="types/:type" element={<TypePokemons />} />
         <Route path="habitats" element={<PokemonHabitats />} />

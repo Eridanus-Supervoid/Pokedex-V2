@@ -43,12 +43,15 @@ export const Id = styled.div`
   height: 2rem;
 `;
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled.button`
   min-height: 110px;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 export const Image = styled.img<{ error: boolean; loadingCheck: boolean }>`
@@ -56,15 +59,7 @@ export const Image = styled.img<{ error: boolean; loadingCheck: boolean }>`
   display: ${({ loading }) => (loading ? 'none' : 'block')};
 `;
 
-export const SpinnerContainer = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: calc(50% - (80px / 2));
-  left: calc(50% - (80px / 2));
-`;
-
 export const FavoriteToggle = styled.img`
   max-width: 30px;
+  cursor: pointer;
 `;

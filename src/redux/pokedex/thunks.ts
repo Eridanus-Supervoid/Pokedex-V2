@@ -2,15 +2,20 @@ import {
   fullListHabitatPokemonsAdapter,
   fullListTypePokemonsAdapter,
   listAdapter,
-} from '@/adapters/fetchAdapters';
+  pokemonDetailsAdapter,
+} from '@/adapters';
 import { IElementWithId, IPaginatedRequest } from '@/models';
 import {
   getAllHabitatsApi,
   getAllPokemonsApi,
   getAllTypesApi,
+  getEvolutionChainApi,
   getHabitatPokemonsApi,
+  getPokemonApi,
+  getPokemonSpeciesApi,
   getTypePokemonsApi,
 } from '@/services';
+import { idExtractor } from '@/utils';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getAllPokemons = createAsyncThunk(
@@ -74,6 +79,28 @@ export const getHabitatPokemons = createAsyncThunk(
       const listWithIds: IElementWithId[] =
         fullListHabitatPokemonsAdapter(pokemon_species);
       return listWithIds;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getPokemon = createAsyncThunk(
+  'pokedex/getPokemon',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const pokemon = await getPokemonApi(id);
+      const { evolution_chain, ...pokemonSpecies } = await getPokemonSpeciesApi(
+        id
+      );
+      const evolutionChainId = idExtractor(evolution_chain.url);
+      const { chain } = await getEvolutionChainApi(+evolutionChainId!);
+      const pokemonDetails = pokemonDetailsAdapter(
+        pokemon,
+        pokemonSpecies,
+        chain
+      );
+      return { pokemonDetails };
     } catch (error: any) {
       return rejectWithValue(error.response.data);
     }

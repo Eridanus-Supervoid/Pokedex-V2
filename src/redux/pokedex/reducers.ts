@@ -50,6 +50,12 @@ const reducers = {
     deletePokemonFromCollection(updateFavoritePokemons, action.payload);
     state.favoritePokemons = updateFavoritePokemons;
   },
+  setPokemonDetail: (
+    state: PokedexState,
+    action: PayloadAction<PokedexState['pokemonDetail']>
+  ) => {
+    state.pokemonDetail = action.payload;
+  },
 };
 
 export default reducers;

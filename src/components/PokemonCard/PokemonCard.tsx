@@ -3,11 +3,12 @@ import { wordsToUppercase } from '@/utils';
 import { useFavoritePokemon } from '@/hooks';
 import { useState } from 'react';
 import { API_IMG_URL } from '@/services';
-import { Spinner } from '@/styled-components';
+import { Spinner, SpinnerContainer } from '@/styled-components';
 import * as S from './styled-components';
 import iconOpen from '@/assets/images/icon-open-pokeball.png';
 import iconClose from '@/assets/images/icon-close-pokeball.png';
 import noImage from '@/assets/images/icon-no-image.png';
+import { useNavigate } from 'react-router-dom';
 
 interface IPokemonCardProps {
   pokemon: IElementWithId;
@@ -24,8 +25,14 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
   const { isFavorite, addFavoritePokemon, deleteFavoritePokemon } =
     useFavoritePokemon(id!);
 
-  const handleClick = () => {
+  const navigate = useNavigate();
+
+  const handleFavoriteToggle = () => {
     isFavorite ? deleteFavoritePokemon(+id!) : addFavoritePokemon(pokemon);
+  };
+
+  const handleImageClick = () => {
+    navigate(`/pokemons/${name}/${id}`);
   };
 
   const handleLoad = () => {
@@ -39,15 +46,15 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
         <S.FavoriteToggle
           src={isFavorite ? iconClose : iconOpen}
           alt={isFavorite ? 'Close Pokeball' : 'Open Pokeball'}
-          onClick={handleClick}
+          onClick={handleFavoriteToggle}
         />
         <S.Id>{`N°${id}`}</S.Id>
       </S.HeaderContainer>
-      <S.ImageContainer>
+      <S.ImageContainer onClick={handleImageClick} type="button">
         {loading && (
-          <S.SpinnerContainer>
+          <SpinnerContainer>
             <Spinner />
-          </S.SpinnerContainer>
+          </SpinnerContainer>
         )}
         <S.Image
           src={error ? noImage : `${API_IMG_URL}${id}.png`}

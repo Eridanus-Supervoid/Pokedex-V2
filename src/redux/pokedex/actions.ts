@@ -8,4 +8,5 @@ export const {
   setHabitatPokemons,
   setFavoritePokemon,
   removeFavoritePokemon,
+  setPokemonDetail,
 } = pokedexActions;
