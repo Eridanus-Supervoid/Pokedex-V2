@@ -17,3 +17,14 @@ export const weightTransformer = (weight: number) => {
     lbs: `${weightInLbs.toFixed(1)}lbs`,
   };
 };
+
+export const descriptionFormatter = (description: string) => {
+  const descriptionFormatted = description
+    .replace(/\f/g, '\n')
+    .replace(/\u00ad\n/g, '')
+    .replace(/\u00ad/g, '')
+    .replace(/ -\n/g, ' - ')
+    .replace(/-\n/g, '-')
+    .replace(/\n/g, ' ');
+  return descriptionFormatted;
+};

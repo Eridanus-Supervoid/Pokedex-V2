@@ -9,9 +9,9 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 24px;
     font-weight: 400;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    /* color-scheme: light dark; */
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #F9F9F9;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -67,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 2;
   }
 
-  @media (prefers-color-scheme: light) {
+  /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -78,7 +78,7 @@ export const GlobalStyles = createGlobalStyle`
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 
 h1 {
   font-size: 2rem;

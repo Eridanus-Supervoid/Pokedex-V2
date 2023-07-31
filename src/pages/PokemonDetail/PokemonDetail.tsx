@@ -24,7 +24,7 @@ const PokemonDetail: React.FC = () => {
       {loadingImage && <LoadingScreen />}
       {!loading && (
         <S.Container pokemonType={types[0]?.name}>
-          <Navbar name={wordsToUppercase(name!)} to="/" />
+          <Navbar name={wordsToUppercase(name!)} to="/" padding="0 20px" />
           <Header
             loadingImage={loading}
             onLoadImage={() => setLoadingImage(false)}

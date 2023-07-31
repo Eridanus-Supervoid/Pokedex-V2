@@ -18,6 +18,13 @@ export const AboutContainer = styled.section`
   }
 `;
 
+export const HeaderContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const MeasuresContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -77,15 +84,13 @@ export const MeasuredValue = styled.span`
 
 export const ImageContainer = styled.div`
   display: flex;
-  width: 100%;
   position: relative;
-  max-height: 400px;
   justify-content: center;
   align-items: center;
   img {
-    padding: 0 3rem 0;
+    padding: 0 2rem 0;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 30vh;
   }
 `;
 

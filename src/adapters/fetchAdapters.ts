@@ -10,7 +10,11 @@ import {
   pokemonGenLimitList,
   pokemonGenLimitOffset,
 } from '@/utils';
-import { heightTransformer, weightTransformer } from '@/utils/pokemonDetails';
+import {
+  descriptionFormatter,
+  heightTransformer,
+  weightTransformer,
+} from '@/utils/pokemonDetails';
 import {
   ChainLink,
   NamedAPIResource,
@@ -53,6 +57,10 @@ export const pokemonDetailsAdapter = (
   const habitatID = habitat ? idExtractor(habitat.url) : '';
   const habitatName = habitat ? habitat.name : 'Unknown';
 
+  const descriptionFormatted = descriptionFormatter(
+    flavor_text_entries[0].flavor_text
+  );
+
   const pokemonDetails: IPokemonDetail = {
     id: id.toString(),
     name: name,
@@ -65,7 +73,7 @@ export const pokemonDetailsAdapter = (
     },
     stats: createStatsList(stats),
     evolution: createEvolutionList(chain),
-    description: flavor_text_entries[0].flavor_text,
+    description: descriptionFormatted,
     habitat: {
       name: habitatName,
       id: habitatID,

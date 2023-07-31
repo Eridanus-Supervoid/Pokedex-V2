@@ -1,7 +1,12 @@
 import { useAppSelector } from '@/redux';
 import { Spinner, SpinnerContainer } from '@/styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ImageContainer, Type, TypesContainer } from './styled-components';
+import {
+  HeaderContainer,
+  ImageContainer,
+  Type,
+  TypesContainer,
+} from './styled-components';
 
 export interface IDetailsHeaderProps {
   loadingImage: boolean;
@@ -22,7 +27,7 @@ export const Header: React.FC<IDetailsHeaderProps> = ({
   };
 
   return (
-    <>
+    <HeaderContainer>
       <ImageContainer>
         {loadingImage && (
           <SpinnerContainer>
@@ -43,6 +48,6 @@ export const Header: React.FC<IDetailsHeaderProps> = ({
           </Type>
         ))}
       </TypesContainer>
-    </>
+    </HeaderContainer>
   );
 };

@@ -1,18 +1,19 @@
+import { useNavigation } from '@/hooks';
 import * as S from './styled-components';
 import pokeball from '../../assets/images/icon-pokeball.png';
-import { useNavigate } from 'react-router-dom';
 
 interface INavProps {
   name?: string;
   to?: string;
+  padding?: string;
 }
 
-export const Navbar: React.FC<INavProps> = ({ name, to }) => {
+export const Navbar: React.FC<INavProps> = ({ name, to, padding = '0px' }) => {
   const isHome = window.location.pathname === '/';
-  const navigate = useNavigate();
+  const { handleNavigate } = useNavigation();
 
   return (
-    <S.Navbar>
+    <S.Navbar padding={padding}>
       {isHome ? (
         <>
           <img src={pokeball} alt="pokeball" />
@@ -21,7 +22,7 @@ export const Navbar: React.FC<INavProps> = ({ name, to }) => {
       ) : (
         <>
           <button
-            onClick={() => navigate(to!)}
+            onClick={handleNavigate}
             style={{ border: 'none', marginRight: '10px', background: 'none' }}
           >
             {'<'}

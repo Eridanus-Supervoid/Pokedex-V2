@@ -5,8 +5,10 @@ interface IContainerProps {
 }
 
 export const Container = styled.div<IContainerProps>`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 40px 1fr 1fr;
+  height: 100vh;
+  padding-top: 20px;
 `;
 
 export const DetailsContainer = styled.section<IContainerProps>`
