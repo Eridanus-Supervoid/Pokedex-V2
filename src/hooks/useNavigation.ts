@@ -28,5 +28,9 @@ export const useNavigation = () => {
     }
   };
 
-  return { currentSection, handleNavigate };
+  const handleNavigateHome = () => {
+    navigate('/');
+  };
+
+  return { handleNavigate, handleNavigateHome };
 };

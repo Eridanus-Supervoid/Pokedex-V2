@@ -4,15 +4,12 @@ import pokeball from '../../assets/images/icon-pokeball.png';
 
 interface INavProps {
   name?: string;
-  to?: string;
   padding?: string;
 }
 
-export const Navbar: React.FC<INavProps> = ({ name, to, padding = '0px' }) => {
+export const Navbar: React.FC<INavProps> = ({ name, padding = '0px' }) => {
   const isHome = window.location.pathname === '/';
-  const { currentSection, handleNavigate } = useNavigation();
-
-  console.log(currentSection);
+  const { handleNavigate, handleNavigateHome } = useNavigation();
 
   return (
     <S.Navbar padding={padding}>
@@ -22,15 +19,17 @@ export const Navbar: React.FC<INavProps> = ({ name, to, padding = '0px' }) => {
           <span>Pokedex</span>
         </>
       ) : (
-        <>
-          <button
-            onClick={handleNavigate}
-            style={{ border: 'none', marginRight: '10px', background: 'none' }}
-          >
-            {'<'}
+        <S.BaseNavbar>
+          <div>
+            <button onClick={handleNavigate} className="back-button">
+              {'<'}
+            </button>
+            <span>{name}</span>
+          </div>
+          <button onClick={handleNavigateHome}>
+            <img src={pokeball} alt="pokeball" />
           </button>
-          <span>{name}</span>
-        </>
+        </S.BaseNavbar>
       )}
     </S.Navbar>
   );
